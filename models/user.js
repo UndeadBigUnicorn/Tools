@@ -1,4 +1,7 @@
-const mongoose = require("./mongoose.js");
+//Connect our configurated MongoDB
+const mongoose = require("./mongoose");
+
+//Get schema builder
 const Schema = mongoose.Schema;
 
 //User's schema

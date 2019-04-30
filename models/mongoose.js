@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const config = require("../config.js");
+const CONFIG = require("../config");
 
 //Connect mongo
-mongoose.connect(config.CONNECTION_URL, {
+mongoose.connect(CONFIG.CONNECTION_URL, {
     useNewUrlParser: true
     }, (err) => {
         if (err) return console.log(err);
 });
 
-//Export our mongoose
+//Export our configurated mongoose
 module.exports.mongoose = mongoose;

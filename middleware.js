@@ -1,31 +1,34 @@
 //Connect required modules
-const express = require('express');
+const express = require("express");
 const app = express();
-const jsonParser = express.json();
+const bodyParser = require("body-parser");
 const path = require("path");
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 //Use parsers
-app.use(jsonParser());
+app.use(bodyParser());
 app.use(cookieParser());
 
 //Setup CORS Policy
 app.use(cors());
 
 //Setup session
-const session = require('express-session');
+var session = require("express-session");
 app.use(session({
       resave: false,
+      httpOnly: true,
       saveUninitialized: true,
       secret: ';l#&ldsa$',
-      cookie: true
+      cookie: {
+          maxAge: 600,
+          secure: true
+      }
 }));
 
 //Make this dirs static to allow Node use them without mapping
-app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "assets")));
 
-//Export our app
+//Export our configurated app
 module.exports.app = app;
