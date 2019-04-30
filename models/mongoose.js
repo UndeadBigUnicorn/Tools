@@ -8,4 +8,5 @@ mongoose.connect(config.CONNECTION_URL, {
         if (err) return console.log(err);
 });
 
+//Export our mongoose
 module.exports.mongoose = mongoose;

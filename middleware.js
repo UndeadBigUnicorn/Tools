@@ -26,3 +26,6 @@ app.use(session({
 //Make this dirs static to allow Node use them without mapping
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//Export our app
+module.exports.app = app;
