@@ -1,43 +1,60 @@
-body{
-	background: #F5F5F5;
+@editors-height: 500px;
+
+html{
+	background: #F5F5F5 !important;
+}
+
+.header{
+	#brand{
+		font-size: 20px;
+	}
+	
+	#brand-img{
+		margin-right: 5px;
+	}
+
+	border-bottom: 1px solid #209CEE;
+}
+
+.tool{
+	&-title{
+		margin-top: 20px;
+	}
+
+	&-editor{
+		height: @editors-height;
+		font-size: 16px;
+		width: 49%;
+	}
+
+	#out_editor{
+		float: right;
+	}
+	
+	#in_editor{
+		float: left;
+	}
+
+	&-buttons{
+		margin-top: @editors-height;
+		.left{
+			float: left;
+			width: 100px;
+		}
+
+		.right{
+			float: right;
+			width: 120px;
+		}
+	}
 }
 
 footer{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
 	background: white !important;
 	border-top: 1px solid #209CEE;
 	padding: 20px !important;
 }
-
-.nav-all{
-	background: white;
-	width: 100%;
-	border-bottom: 1px solid #209CEE;
-}
-
-#brand{
-	font-size: 20px;
-}
-
-#brand-img{
-	margin-right: 5px;
-}
-
-#out_editor{
-	float: right;
-	font-size: 20px;
-}
-
-#in_editor{
-	float: left;
-	font-size: 20px;
-}
-
-.editor { 
-    height: 600px;
-    width: 49%;
-}
-
-.editors{
-	margin-top: 20px;
-}
-
