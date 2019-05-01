@@ -1,11 +1,15 @@
 //Configurated express app
 const app = require("./middleware").app;
 
+//Configurated mail service
+const mailService = require("./helpers/mail");
+
 const CONFIG = require("./config")
 //Test our app
 app.get('/', function(req, res) {  
-
-    return res.send("Hello world");
+    mailService.sendMail("kravchel16@gmail.com", "test", "Privet", "<h1>Qu</h1>",()=>{
+        return res.send("Hello world");
+    });
        
 });
 
