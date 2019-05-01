@@ -26,9 +26,17 @@ app.use(session({
       }
 }));
 
+//Healthcheck
+const health = require("./helpers/health").health;
+const healthcheck = require("./helpers/health").healthcheck;
+app.use('/health', health.LivenessEndpoint(healthcheck))
+
+
 //Make this dirs static to allow Node use them without mapping
-app.use(express.static(path.join(__dirname, "views")));
-app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "/views")));
+app.use('*/css',express.static(path.join(__dirname,'assets/css')));
+app.use('*/js',express.static(path.join(__dirname,'assets/js')));
+app.use('*/img',express.static(path.join(__dirname,'assets/img')));
 
 //Export our configurated app
 module.exports.app = app;
