@@ -3,7 +3,7 @@ const app = require("./middleware").app;
 var path = require('path')
 
 //Configurated mail service
-const mailService = require("./helpers/mail");
+const mailService = require("./utils/mail");
 
 const CONFIG = require("./config/config")
 //Test our app
