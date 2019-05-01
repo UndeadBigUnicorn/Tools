@@ -27,8 +27,8 @@ app.use(session({
 }));
 
 //Healthcheck
-const health = require("./helpers/health").health;
-const healthcheck = require("./helpers/health").healthcheck;
+const health = require("./utils/health").health;
+const healthcheck = require("./utils/health").healthcheck;
 app.use('/health', health.LivenessEndpoint(healthcheck))
 
 //Make this dirs static to allow Node use them without mapping

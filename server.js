@@ -5,7 +5,7 @@ var path = require('path')
 //Configurated mail service
 const mailService = require("./helpers/mail");
 
-const CONFIG = require("./config")
+const CONFIG = require("./config/config")
 //Test our app
 app.get('/', function(req, res) {  
 });
