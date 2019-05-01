@@ -1,6 +1,7 @@
 const nodeMailer = require('nodemailer');
 const CONFIG = require("../config");
 
+//Configure mail service
 let transporter = nodeMailer.createTransport({
     host: CONFIG.MAIL_SERVER,
     port: CONFIG.MAIL_PORT,
@@ -20,8 +21,8 @@ let transporter = nodeMailer.createTransport({
 * @text - string, email text
 * @html - string, email html
 */
-module.exports.sendMail = function(to, subject, text, html, callback){
-    console.log(2);
+module.exports.sendMail = function(to, subject, text, html){
+
     let mailOptions = {
         from: CONFIG.MAIL_SENDER, // sender address
         to: to, // list of receivers
@@ -36,6 +37,6 @@ module.exports.sendMail = function(to, subject, text, html, callback){
         }
         //TODO: log this in db
         console.log('Message %s sent: %s', info.messageId, info.response);
-        callback();
     });
+
 }
