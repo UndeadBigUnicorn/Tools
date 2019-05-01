@@ -20,5 +20,4 @@ app.get('/login', function(req, res) {
 
 app.listen(CONFIG.PORT, ()=>{
     console.log(`Server is running on ${CONFIG.PORT} port`);
-    mailService.sendMail("kravchel16@gmail.com", "test", "Privet", "<h1>Qu</h1>");
 });
