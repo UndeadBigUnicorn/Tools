@@ -1,13 +1,6 @@
+const CONFIG = require('../config/db-config');
 const MongoClient = require('mongodb').MongoClient;
-
-const username = encodeURIComponent('root');
-const password = encodeURIComponent('root');
-const authMechanism = 'DEFAULT';
-const databaseName = 'web-tools';
-const mongoUrl = `mongodb://${username}:${password}@localhost:27017/?authMechanism=${authMechanism}`;
-const connectionOptions = {useNewUrlParser: true};
-
-const client = new MongoClient(mongoUrl, connectionOptions);
+const client = new MongoClient(CONFIG.mongoUrl, CONFIG.connectionOptions);
 
 const ENCODER = require('../utils/encoder');
 
@@ -18,7 +11,7 @@ function addUser(username, password) {
         console.log("Connected to the database");
 
         const users = client
-            .db(databaseName)
+            .db(CONFIG.databaseName)
             .collection('users');
 
         ENCODER.encrypt(password).then(hash => {
@@ -44,7 +37,7 @@ function exists(username, password) {
             console.log("Connected to the database");
 
             const users = client
-                .db(databaseName)
+                .db(CONFIG.databaseName)
                 .collection('users');
 
             users.findOne({
