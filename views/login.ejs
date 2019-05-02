@@ -1,18 +1,37 @@
 <% include common/header.ejs %>
 
 <!--login code start-->
-    <div class="login card">
-        <div class="card-content">
-            <h1 class="title">
-                <img src="/assets/img/logo.png" width="25" height="25" id="brand-img">
-                <span>Welcome to web-tools!</span>
-            </h1>
-            <span>Please login in or <a href="/signup">create an account</a>.</span>
-            <input id="email" class="input" type="email" placeholder="Email">
-            <input id="password" class="input" type="password" placeholder="Password">
-            <button class="login-button button is-info is-medium is-fullwidth">Log in</button>
+<div class="card">
+    <div class="card-content">
+        <h1 class="title">
+            <img src="/assets/img/logo.png" width="25" height="25" id="brand-img">
+            <span>Welcome to web-tools!</span>
+        </h1>
+        <span>Please login in or <a href="/signup">create an account</a>.</span>
+        <div class="fields">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Email">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input" type="password" placeholder="Password">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
         </div>
+        <button class="login-button button is-info is-medium is-fullwidth">Log in</button>
     </div>
+</div>
 <!--login code end-->
 
 <% include common/footer.ejs %>
