@@ -1,8 +1,8 @@
 const path = require("path");
 /**
- * Return static page on 404 Error
+ * Redirect to 404 page
  * @dirPath - string, path to views/static
  */
-module.exports._404 = function(req,res, dirPath){
-    return res.sendFile(path.join(dirPath,"404.html"));
+module.exports._404 = function(req,res){
+    return res.redirect("/404");
 }

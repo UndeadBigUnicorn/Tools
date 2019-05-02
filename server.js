@@ -13,14 +13,14 @@ app.get('/', function(req, res) {
 });
 
 app.get('/tool', function(req, res) {  
-    return res.render('tool');
+    return controllerHelper._404(req,res);
 });
 
 
 app.get('/tool/:toolCode', function(req, res) { 
     let tool = CONFIG.getTool(req.params.toolCode);
     if(!tool){
-        return controllerHelper._404(req,res, path.join(__dirname, "/views/static/"));
+        return controllerHelper._404(req,res);
     } 
     return res.render(`${tool.view}`);
 });
