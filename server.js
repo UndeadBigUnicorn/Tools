@@ -11,11 +11,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/tool', function(req, res) {  
-    return res.sendFile(path.join(__dirname + '/views/tool.html'));
+    return res.render('tool');
 });
 
 app.get('/login', function(req, res) {  
-    return res.sendFile(path.join(__dirname + '/views/login.html'));
+    return res.render('login');
 });
 
 app.listen(CONFIG.PORT, ()=>{

@@ -1,0 +1,50 @@
+<% include common/header.ejs %>
+
+<!--login code start-->
+
+    <section class="hero is-fullheight is-medium is-bold">
+          <div class="hero-body">
+            <div class="container">
+              <div class="columns is-centered"">
+                <article class="card is-rounded">
+                  <div class="login card-content">
+                    <h1 class="title">
+                        <img src="/assets/img/logo.png" width="25" height="25" id="brand-img">
+                        <span>Login</span>
+                    </h1>
+                    <p class="control has-icon">
+                      <input id="email" class="input" type="email" placeholder="Email">
+                      <i class="fa fa-envelope"></i>
+                    </p>
+                    <p class="control has-icon">
+                      <input id="password" class="input" type="password" placeholder="Password">
+                      <i class="fa fa-lock"></i>
+                    </p>
+                    <p class="control">
+                      <label class="checkbox">
+                        <input type="checkbox">
+                        Remember me
+                      </label>
+                    </p>
+                    <p class="control">
+                      <button class="button is-info is-medium is-fullwidth">
+                        <i class="fa fa-user"></i>
+                        Login
+                      </button>
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+      </div>
+    </section>
+
+<!--login code end-->
+
+<% include common/footer.ejs %>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../assets/js/login.js"></script>
+
+</body>
+</html>

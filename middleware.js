@@ -31,11 +31,18 @@ const health = require("./utils/health").health;
 const healthcheck = require("./utils/health").healthcheck;
 app.use('/health', health.LivenessEndpoint(healthcheck))
 
+//ejs
+app.set('views', path.join(__dirname + '/views'));
+app.set('view engine', 'ejs');
+
 //Make this dirs static to allow Node use them without mapping
 app.use(express.static(path.join(__dirname, "/views")));
 app.use('*/less',express.static(path.join(__dirname,'assets/less')));
 app.use('*/js',express.static(path.join(__dirname,'assets/js')));
 app.use('*/img',express.static(path.join(__dirname,'assets/img')));
+
+
+
 
 //Export our configurated app
 module.exports.app = app;
