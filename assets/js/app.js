@@ -6,7 +6,7 @@ $(function () {
 
     in_editor.session.on('change', function(delta) {
         //transformation script
-        out_editor.setValue(in_editor.getValue());
+        out_editor.setValue(JSON.stringify(in_editor.getValue(), null ,4));
     });
 
     function download(filename, text) {
