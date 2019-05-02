@@ -1,59 +1,46 @@
 <% include common/header.ejs %>
 
-<div class="tool container is-fluid">
-    <section class="hero is-warning is-bold">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Avatar picture generating tool
-            </h1>
-          </div>
-        </div>
-    </section>
-      <br/>
-      <div class="avatar-container">
-        <div class="box left-box">
-                <div class="content">
-                <p>
-                    <strong>Enter name to generate picture:</strong> <small>(name is needed to generate avatar based on it)</small>
-                </p>
-                </div>
-                <nav class="level is-mobile">
-                <div class="level-left">
-                    <div class="field is-horizontal">
-                        <div class="control">
-                        <input id="name" class="input is-primary" type="text" placeholder="Your name">
-                        </div>
-                        <div class="control left-btn">
-                            <button id="confirm-btn" class="button is-primary">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-                </nav>
-        </div>
+<!--tool code start-->
 
-        <div class="box right-box">
-            <div class="content">
-                <p>
-                    <strong>Result</strong>
-                </p>
-                <div id="temp-container">
-                    <section id="temp" class="hero is-info is-bold">
-                        <div class="hero-body">
-                            <div class="container">
-                                <h1 class="title">
-                                It will be replaced with result
-                                </h1>
-                            </div>
-                        </div>
-                    </section>
-                    <img id="image" src="">
+<div class="tool container is-fluid avatar-container">
+
+    <h1 class="tool-title title is-4" align="center">Avatar picture generating tool</h1>
+    
+
+<% include common/api_notification.ejs %>
+
+    <div class="box left-box">
+        <div class="content">
+        <p>
+            <strong>Enter name to generate picture:</strong><br> <small>(name is needed to generate avatar based on it)</small>
+        </p>
+        </div>
+        <div class="level-left">
+            <div class="field is-horizontal">
+                <div class="control">
+                <input id="name" class="input is-info" type="text" placeholder="Your name">
+                </div>
+                <div class="control left-btn">
+                    <button id="confirm-btn" class="button is-info">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="box right-box">
+        <div class="content">
+            <p align="left">
+                <strong>Result:</strong>
+            </p>
+            <div id="temp-container">
+                <img id="image" src="">
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<!--tool code end-->
 
 <% include common/footer.ejs %>
 
