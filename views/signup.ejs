@@ -1,6 +1,6 @@
 <% include common/header.ejs %>
 
-<!--login code start-->
+<!--sign code start-->
 <div class="card">
     <div class="card-content">
         <h1 class="title">
@@ -11,18 +11,17 @@
         <div class="fields">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
+                    <input id="email" class="input" type="email" placeholder="Email">
+                    <span id="email-err" class="is-small is-danger"></span>
                     <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                     </span>
                 </p>
             </div>
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
+                    <input id="password" class="input" type="password" placeholder="Password">
+                    <span id="password-err" class="is-small is-danger"></span>
                     <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                     </span>
@@ -30,18 +29,19 @@
             </div>
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Re-password">
+                    <input id="confirm-password" class="input" type="password" placeholder="Confirm password">
+                    <span id="confirm-password-err" class="is-small is-danger"></span>
                     <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                     </span>
                 </p>
             </div>
         </div>
-        <button class="login-button button is-info is-medium is-fullwidth">Log in</button>
+        <button id="signup-btn" class="login-button button is-info is-medium is-fullwidth">Sign up</button>
     </div>
 </div>
-<!--login code end-->
+<!--signup code end-->
 
 <% include common/footer.ejs %>
 
-<script src="../assets/js/login.js"></script>
+<script src="../assets/js/signup.js"></script>
