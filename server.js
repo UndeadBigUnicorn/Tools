@@ -18,6 +18,10 @@ app.get('/login', function(req, res) {
     return res.render('login');
 });
 
+app.get('/signup', function(req, res) {  
+    return res.render('signup');
+});
+
 app.listen(CONFIG.PORT, ()=>{
     console.log(`Server is running on ${CONFIG.PORT} port`);
 });
