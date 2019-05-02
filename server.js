@@ -12,9 +12,10 @@ const CONFIG = require("./config/config")
 app.get('/', function(req, res) {  
 });
 
-app.get('/tool', function(req, res) { 
-    return res.redirect("/");
+app.get('/tool', function(req, res) {  
+    return res.render('tool');
 });
+
 
 app.get('/tool/:toolCode', function(req, res) { 
     let tool = CONFIG.getTool(req.params.toolCode);
@@ -30,6 +31,10 @@ app.get('/login', function(req, res) {
 
 app.get('/signup', function(req, res) {  
     return res.render('signup');
+});
+
+app.get('/404', function(req, res) {  
+    return res.render('static/404');
 });
 
 app.listen(CONFIG.PORT, ()=>{
