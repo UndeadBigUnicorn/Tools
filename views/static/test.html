@@ -1,0 +1,12 @@
+<style>
+body { white-space: pre; font-family: monospace; }
+</style>
+<body>
+
+    <script>
+        var obj = {"InsuranceCompanies":{"Top Insurance Companies":[{"No":"1","Name":"Berkshire Hathaway ( BRK.A)","Market Capitalization":"$308 billion"}],"source":"investopedia.com","Time":"Feb 2019"}}
+    
+    document.body.innerHTML = "";
+    document.body.appendChild(document.createTextNode(JSON.stringify(obj, null, 4)));
+        </script>
+</body>
