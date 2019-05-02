@@ -1,18 +1,14 @@
-$(function () {
+
     var in_editor = ace.edit("in_editor");
     var out_editor = ace.edit("out_editor");
     in_editor.session.setMode("ace/mode/javascript");
     out_editor.session.setMode("ace/mode/javascript");
 
-    in_editor.session.on('change', function(delta) {
-        //transformation script
-        out_editor.setValue(JSON.stringify(in_editor.getValue(), null ,4));
-    });
-
     function download(filename, text) {
         var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,');
+        element.setAttribute('href', "data:text/plain,"+text);
         element.setAttribute('download', filename);
+        element.textContent = text;
 
         element.style.display = 'none';
         document.body.appendChild(element);
@@ -32,4 +28,3 @@ $(function () {
         var filename = "result.txt";
         download(filename, text);
     });
-});
