@@ -1,6 +1,8 @@
 //Configurated express app
 const app = require("./middleware").app;
 const path = require("path");
+
+const ejs = require('ejs');
 //Configurated mail service
 const mailService = require("./utils/mail");
 
@@ -26,7 +28,8 @@ app.get('/tool/:toolCode', function(req, res) {
 });
 
 app.get('/home', function(req, res) {  
-    return res.render('home');
+    let tools = CONFIG.tools;
+    return res.render('home', {tools: tools});
 });
 
 app.get('/api', function(req, res) {  

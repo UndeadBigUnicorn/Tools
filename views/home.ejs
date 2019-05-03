@@ -11,18 +11,11 @@
         Please read the <a href="/api">documentation</a>.
         <h1 class="tool-title title is-6">Here is all available tools:</h1>
         <div style="font-size:20px;">
+            <%for(var i=0; i< tools.length; ++i){%>
             <div class="tool-elem">
-                <a>toolname</a> - description
+                <a href="/tool/<%=tools[i].code%>"><%=tools[i].name%></a> - <%=tools[i].description%>
             </div>
-            <div class="tool-elem">
-                <a>toolname</a> - description
-            </div>
-            <div class="tool-elem">
-                <a>toolname</a> - description
-            </div>
-            <div class="tool-elem">
-                <a>toolname</a> - description
-            </div>
+            <%}%>
         </div>
     </div>
 </div>
