@@ -25,6 +25,14 @@ app.get('/tool/:toolCode', function(req, res) {
     return res.render(`${tool.view}`);
 });
 
+app.get('/home', function(req, res) {  
+    return res.render('home');
+});
+
+app.get('/api', function(req, res) {  
+    return res.render('api');
+});
+
 app.get('/login', function(req, res) {  
     return res.render('login');
 });
