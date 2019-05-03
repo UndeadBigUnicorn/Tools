@@ -1,0 +1,64 @@
+<% include common/header.ejs %>
+
+<!--home code start-->
+
+<div class="container">
+    <h1 class="tool-title title is-4" align="center">web-tools API</h1>
+    <div class="box">
+        The web-tools is an HTTP-based interface created for developers keen on building programs that need our tools.
+        <h1 class="tool-title title is-5"><strong>Making requests:</strong></h1>
+        All queries to the Telegram Bot API must be served over HTTPS and need to be presented in this form:<br>
+        <code>https://web-tool.com/api/TOOL_NAME?fields</code>. Like this for example:<br>
+        <pre style="padding:5px;margin-top:5px;"><code>https://web-tool.com/api/avatar-generator?name=illya</code></pre>
+        We support <strong>GET</strong> and <strong>POST</strong> HTTP methods.<br>
+        The response contains a JSON object, which always has a Boolean field ‘ok’.<br>
+        All queries must be made using UTF-8.<br>
+        <h1 class="tool-title title is-5"><strong>Tool list:</strong></h1>
+
+        <!--one element code start-->
+        <div class="tool-api">
+            <h1 class="tool-title title is-5" style="font-weight:350;"><a href="/tool/avatar-generator">avatar-generator</a></h1>
+            <table class="table is-bordered" style="font-size:15px;">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>name to generade the avatar picture</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--one element code end-->
+
+        <div class="tool-api">
+            <h1 class="tool-title title is-5" style="font-weight:350;"><a href="/avatarGenerator">avatarGenerator</a></h1>
+            <table class="table is-bordered" style="font-size:15px;">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>name to generade the avatar picture</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--home code end-->
+
+<% include common/footer.ejs %>
