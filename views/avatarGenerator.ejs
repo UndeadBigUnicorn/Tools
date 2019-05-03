@@ -33,6 +33,16 @@
                 <strong>Result:</strong>
             </p>
             <div id="temp-container">
+                <section id="temp" class="hero is-info">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title is-centered" align="left">
+                                It will be replaced by your image
+                            </h1>
+                        </div>
+                    </div>
+                </section>
+                <div id="loader" class="lds-circle"><div></div></div>
                 <img id="image" src="">
             </div>
         </div>
@@ -45,3 +55,21 @@
 <% include common/footer.ejs %>
 
 <script src="/assets/js/avatar.js" type="text/javascript"></script>
+<script>
+        function download() {
+            let data = $("#download-btn").attr("data-src");
+            var element = document.createElement('a');
+            element.setAttribute('href', data);
+            element.setAttribute('download', "avatar.jpeg");
+            let img = document.createElement("img");
+            img.src = data;
+            element.appendChild(img);
+    
+            element.style.display = 'none';
+            document.body.appendChild(element);
+    
+            element.click();
+    
+            document.body.removeChild(element);
+        }
+</script>
