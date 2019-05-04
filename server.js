@@ -67,6 +67,31 @@ app.get('/api/email-checker', function(req,res){
     });
 });
 
+app.get('/api/avatar-generator', function(req,res){
+    let name = req.query.name;
+    if(!name){
+        return res.status(400).send("Bad request, argument is required!");
+    }
+    return res.redirect(`http://avatar-generator-tool.herokuapp.com/${name}`);
+});
+
+app.get('/api/json-beautifier', function(req,res){
+    let json = req.query.json;
+    if(!json){
+        return res.status(400).send("Bad request, argument is required!");
+    }
+
+    try {
+        
+        return res.send(JSON.stringify(JSON.parse(json), null ,4));
+
+    } catch (err) {
+
+        return res.status(400).send("Bad request, undefined JSON format!"); 
+
+    }
+});
+
 app.get('/login', function(req, res) {  
     return res.render('login', {tools:  CONFIG.tools});
 });

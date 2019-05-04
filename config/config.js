@@ -24,7 +24,7 @@ CONFIG.tools = [
     },
     {code: "facebook-checker", name: "Facebook checker", view: "facebookChecker", description: "checks if Facebook account exist. Supports input like 'account name' or urls like 'https://www.notfacebook.com/Name', 'https://www.facebook.com/Name/', 'https://www.facebook.com/pg/Name/reviews/?ref=page_internal' (without https in link too)",
     fields: [
-        {field: "link", type: "String", description: "link to check"}
+        {field: "url", type: "String", description: "link to check"}
     ]    
     },
     {code: "email-checker", name: "Email checker", view: "emailChecker", description: "checks if email address is real.",
