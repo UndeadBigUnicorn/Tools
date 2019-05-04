@@ -7,6 +7,9 @@ const encrypt = require("./utils/encrypt");
 const facebookChecker = require("./utils/facebookChecker");
 const emailChecker = require("./utils/emailChecker");
 
+//Database
+const database = require("./database/database");
+
 const CONFIG = require("./config/config")
 
 //Test our app
@@ -82,7 +85,7 @@ app.get('/api/json-beautifier', function(req,res){
     }
 
     try {
-        
+
         return res.send(JSON.stringify(JSON.parse(json), null ,4));
 
     } catch (err) {
@@ -90,6 +93,18 @@ app.get('/api/json-beautifier', function(req,res){
         return res.status(400).send("Bad request, undefined JSON format!"); 
 
     }
+});
+
+app.get('/api/name-generator', function(req,res){ 
+    database.selectRandomAdjective().then(adj=>{
+        let adjective = adj;
+
+        database.selectRandomAnimal().then(anm=>{
+            let animal = anm;
+            return res.send(adjective + " " + animal);
+        });
+    });
+     
 });
 
 app.get('/login', function(req, res) {  
