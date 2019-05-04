@@ -1,7 +1,7 @@
 const CONFIG = {};
 
 //Port, where our app will be running
-CONFIG.PORT = process.env.PORT || 3001;
+CONFIG.PORT = process.env.PORT || 3000;
 
 //Mail config
 
@@ -22,10 +22,15 @@ CONFIG.tools = [
         fields: [
         ]
     },
-    {code: "facebook-checker", name: "Facebook checker", view: "facebookChecker", description: "checks if Facebook account exist. Supports input like 'account name' or urls like 'https://www.notfacebook.com/Name', 'https://www.facebook.com/Name/', 'https://www.facebook.com/pg/Name/reviews/?ref=page_internal'",
+    {code: "facebook-checker", name: "Facebook checker", view: "facebookChecker", description: "checks if Facebook account exist. Supports input like 'account name' or urls like 'https://www.notfacebook.com/Name', 'https://www.facebook.com/Name/', 'https://www.facebook.com/pg/Name/reviews/?ref=page_internal' (without https in link too)",
     fields: [
         {field: "link", type: "String", description: "link to check"}
     ]    
+    },
+    {code: "email-checker", name: "Email checker", view: "mailChecker", description: "checks if email adress is real.",
+    fields: [
+        {field: "email", type: "String", description: "Email address to be checked"}
+        ]    
     },
     {code: "sha256-encryptor", name: "SHA256 encryptor", view: "sha256Encryptor", description: "encrypts string using SHA256.",
         fields: [
