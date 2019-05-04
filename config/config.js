@@ -26,7 +26,12 @@ CONFIG.tools = [
         fields: [
             {field: "str", type: "String", description: "string to be ectrypted"}
         ]    
-    }
+    },
+    {code: "md5-encryptor", name: "MD5 encryptor", view: "md5Encryptor", description: "encrypt string using MD5.",
+    fields: [
+        {field: "str", type: "String", description: "string to be ectrypted"}
+    ]    
+}
 ]
 
 /**
