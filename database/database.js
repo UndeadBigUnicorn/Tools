@@ -12,7 +12,7 @@ function addUser(username, password) {
 
         const users = client
             .db(CONFIG.databaseName)
-            .collection('users');
+            .collection(CONFIG.users);
 
         ENCODER.encrypt(password).then(hash => {
             const user = {
@@ -38,7 +38,7 @@ function exists(username, password) {
 
             const users = client
                 .db(CONFIG.databaseName)
-                .collection('users');
+                .collection(CONFIG.users);
 
             users.findOne({
                 username: username
@@ -56,5 +56,96 @@ function exists(username, password) {
     });
 }
 
-module.exports.addUser = addUser;
-module.exports.exists = exists;
+function addAdjective(adj) {
+    client.connect((err) => {
+        if (err)
+            throw err;
+        console.log("Connected to the database");
+
+        const adjectives = client
+            .db(CONFIG.databaseName)
+            .collection(CONFIG.adjectives);
+
+        adjectives
+            .insertOne({
+                adj: adj
+            })
+            .then(() => {
+                console.log('Adjective ' + adj + ' has been inserted');
+                client.close();
+            });
+    });
+}
+
+function addAnimal(am) {
+    client.connect((err) => {
+        if (err)
+            throw err;
+        console.log("Connected to the database");
+
+        const animals = client
+            .db(CONFIG.databaseName)
+            .collection(CONFIG.animals);
+
+        animals
+            .insertOne({
+                name: am
+            })
+            .then(() => {
+                console.log('Animal ' + am + ' has been inserted');
+                client.close();
+            });
+    });
+}
+
+function selectRandomAdjective() {
+    return new Promise((resolve, reject) => {
+        client.connect((err) => {
+            if (err)
+                throw err;
+            console.log("Connected to the database");
+
+            const adjectives = client
+                .db(CONFIG.databaseName)
+                .collection(CONFIG.adjectives);
+
+            adjectives
+                .aggregate([{$sample: {size: 1}}]).toArray(function (err, res) {
+                if (err)
+                    reject(err);
+                resolve(res);
+                client.close();
+            })
+        });
+    });
+}
+
+function selectRandomAnimal() {
+    return new Promise((resolve, reject) => {
+        client.connect((err) => {
+            if (err)
+                throw err;
+            console.log("Connected to the database");
+
+            const animals = client
+                .db(CONFIG.databaseName)
+                .collection(CONFIG.animals);
+
+            animals.aggregate([{$sample: {size: 1}}]).toArray(function (err, res) {
+                if (err)
+                    reject(err);
+                resolve(res);
+                client.close();
+            });
+        });
+    });
+}
+
+module.exports = {
+    addUser,
+    exists,
+    addAdjective,
+    addAnimal,
+    selectRandomAdjective,
+    selectRandomAnimal
+};
