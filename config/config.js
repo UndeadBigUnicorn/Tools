@@ -27,7 +27,7 @@ CONFIG.tools = [
         {field: "link", type: "String", description: "link to check"}
     ]    
     },
-    {code: "email-checker", name: "Email checker", view: "mailChecker", description: "checks if email adress is real.",
+    {code: "email-checker", name: "Email checker", view: "emailChecker", description: "checks if email address is real.",
     fields: [
         {field: "email", type: "String", description: "Email address to be checked"}
         ]    

@@ -14,7 +14,7 @@ $(window).ready(()=>{
 
         $("#loader").show();
         
-        $.get("/api/facebook-checker?url="+input, data=>{
+        $.get("/api/email-checker?email="+input, data=>{
             if(data){
                 $("#output").html("Exist");
             }

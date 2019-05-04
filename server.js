@@ -5,6 +5,7 @@ const app = require("./middleware").app;
 const controllerHelper = require("./utils/controllerHelper");
 const encrypt = require("./utils/encrypt");
 const facebookChecker = require("./utils/facebookChecker");
+const emailChecker = require("./utils/emailChecker");
 
 const CONFIG = require("./config/config")
 
@@ -52,6 +53,16 @@ app.get('/api/facebook-checker', function(req,res){
         return res.status(400).send("Bad request, argument is required!");
     }
     facebookChecker.checkFacebook(url, bool=>{
+        return res.send(bool);
+    });
+});
+
+app.get('/api/email-checker', function(req,res){
+    let email = req.query.email;
+    if(!email){
+        return res.status(400).send("Bad request, argument is required!");
+    }
+    emailChecker.checkEmail(email, bool=>{
         return res.send(bool);
     });
 });

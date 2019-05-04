@@ -1,0 +1,36 @@
+<% include ../common/header.ejs %>
+
+<!--tool code start-->
+
+<div class="tool container is-fluid avatar-container">
+
+    <h1 class="tool-title title is-4" align="center">Email address checker</h1>
+    
+
+<% include ../common/api_notification.ejs %>
+
+    <div class="box left-box">
+        <div class="content">
+        <p>
+            <strong>Click on button to check if email address exist:</strong><br>
+        </p>
+        </div>
+        <div class="level-left">
+            <div class="control">
+                <input id="input" class="input is-info" placeholder="Email">
+            </div>
+            <div class="control left-btn">
+                <button id="check-btn" class="button is-info">Check</button>
+            </div> <br/>
+            <div id="loader" class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div id="output" class="title" style="margin-left:1em;"></div>
+        </div>
+    </div>
+
+</div>
+
+<!--tool code end-->
+
+<% include ../common/footer.ejs %>
+
+<script src="/assets/js/email.js" type="text/javascript"></script>
