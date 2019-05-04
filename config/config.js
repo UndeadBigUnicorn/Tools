@@ -1,7 +1,7 @@
 const CONFIG = {};
 
 //Port, where our app will be running
-CONFIG.PORT = process.env.PORT || 5050;
+CONFIG.PORT = process.env.PORT || 3001;
 
 //Mail config
 
@@ -22,16 +22,21 @@ CONFIG.tools = [
         fields: [
         ]
     },
-    {code: "sha256-encryptor", name: "SHA256 encryptor", view: "sha256Encryptor", description: "encrypt string using SHA256.",
+    {code: "facebook-checker", name: "Facebook checker", view: "facebookChecker", description: "checks if Facebook account exist. Supports input like 'account name' or urls like 'https://www.notfacebook.com/Name', 'https://www.facebook.com/Name/', 'https://www.facebook.com/pg/Name/reviews/?ref=page_internal'",
+    fields: [
+        {field: "link", type: "String", description: "link to check"}
+    ]    
+    },
+    {code: "sha256-encryptor", name: "SHA256 encryptor", view: "sha256Encryptor", description: "encrypts string using SHA256.",
         fields: [
             {field: "str", type: "String", description: "string to be ectrypted"}
         ]    
     },
-    {code: "md5-encryptor", name: "MD5 encryptor", view: "md5Encryptor", description: "encrypt string using MD5.",
+    {code: "md5-encryptor", name: "MD5 encryptor", view: "md5Encryptor", description: "encrypts string using MD5.",
     fields: [
         {field: "str", type: "String", description: "string to be ectrypted"}
     ]    
-}
+    }
 ]
 
 /**

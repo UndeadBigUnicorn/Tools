@@ -4,7 +4,7 @@ $(window).ready(()=>{
 
         let input = $("#input").val();
         
-        $.get("/api/sha256?str="+input, data=>{
+        $.get("/api/sha256-encryptor?str="+input, data=>{
             $("#output").val(data);
         })
     })

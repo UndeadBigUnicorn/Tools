@@ -1,0 +1,37 @@
+<% include ../common/header.ejs %>
+
+<!--tool code start-->
+
+<div class="tool container is-fluid avatar-container">
+
+    <h1 class="tool-title title is-4" align="center">Facebook checker</h1>
+    
+
+<% include ../common/api_notification.ejs %>
+
+    <div class="box left-box">
+        <div class="content">
+        <p>
+            <strong>Click on button to check if facebook account or group exist:</strong><br>
+            <small>You can enter name only or facebook link</small>
+        </p>
+        </div>
+        <div class="level-left">
+            <div class="control">
+                <input id="input" class="input is-info" placeholder="Name or url">
+            </div>
+            <div class="control left-btn">
+                <button id="check-btn" class="button is-info">Check</button>
+            </div> <br/>
+            <div id="loader" class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div id="output" class="title" style="margin-left:1em;"></div>
+        </div>
+    </div>
+
+</div>
+
+<!--tool code end-->
+
+<% include ../common/footer.ejs %>
+
+<script src="/assets/js/facebook.js" type="text/javascript"></script>
