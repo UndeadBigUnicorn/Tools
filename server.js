@@ -28,7 +28,7 @@ app.get('/tool/:toolCode', function(req, res) {
     if(!tool){
         return controllerHelper._404(req,res);
     } 
-    return res.render('${tool.view}', {tools:  CONFIG.tools});
+    return res.render('tools/' + tool.view, {tools:  CONFIG.tools});
 });
 
 app.get('/home', function(req, res) {
