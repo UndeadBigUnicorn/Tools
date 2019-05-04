@@ -1,0 +1,44 @@
+<% include ../common/header.ejs %>
+
+<!--tool code start-->
+
+<div class="tool container is-fluid avatar-container">
+
+    <h1 class="tool-title title is-4" align="center">SHA256 encryptor</h1>
+    
+
+<% include ../common/api_notification.ejs %>
+
+    <div class="box left-box">
+        <div class="content">
+        <p>
+            <strong>Click on button to enctrypt string to SHA256:</strong><br>
+        </p>
+        </div>
+        <div class="level-left">
+            <textarea id="input" class="textarea is-info" placeholder="Enter string here"></textarea>
+        </div>
+    </div>
+
+    <div class="box right-box">
+            <div class="content">
+                <p align="left">
+                    <strong>Result:</strong>
+                </p>
+            </div>
+            <div class="level-left">
+                <textarea id="output" class="textarea is-info" placeholder="Result will be here"></textarea>
+            </div>
+    </div>
+
+    <div class="control">
+            <button id="convert-btn" class="button is-info">Enctrypt</button>
+    </div>
+
+</div>
+
+<!--tool code end-->
+
+<% include ../common/footer.ejs %>
+
+<script src="/assets/js/sha256.js" type="text/javascript"></script>

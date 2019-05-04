@@ -7,5 +7,5 @@
 
 - Docker run:
     To start app in docker use this two commands
-   `docker build -t webtools-run:1.0.0 -f Dockerfile .`
-   `docker run -i -p 3000:3000 -t webtools-run:1.0.0`
+   `docker build -t webtools:1.0.0 -f Dockerfile .`
+   `docker run -i -p 3000:3000 -t webtools:1.0.0`

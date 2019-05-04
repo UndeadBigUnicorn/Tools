@@ -2,20 +2,15 @@
 const app = require("./middleware").app;
 const path = require("path");
 
-const ejs = require('ejs');
-//Configurated mail service
-const mailService = require("./utils/mail");
-
 //Some usefull functions
 const controllerHelper = require("./utils/controllerHelper");
+const encrypt = require("./utils/encrypt");
 
 const CONFIG = require("./config/config")
 
-var tools = 
-
 //Test our app
 app.get('/', function(req, res) { 
-    res.redirect('/home') 
+    res.redirect('/home'); 
 });
 
 app.get('/tool', function(req, res) {  
@@ -37,6 +32,14 @@ app.get('/home', function(req, res) {
 
 app.get('/api', function(req, res) {  
     return res.render('api', {tools:  CONFIG.tools});
+});
+
+app.get('/api/sha256', function(req,res){
+    let str = req.query.str;
+    if(!str){
+        return res.status(400).send("Bad request, argument is required!");
+    }
+    return res.send(encrypt.SHA256(str)); 
 });
 
 app.get('/login', function(req, res) {  

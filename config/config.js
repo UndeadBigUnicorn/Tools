@@ -1,7 +1,7 @@
 const CONFIG = {};
 
 //Port, where our app will be running
-CONFIG.PORT = process.env.PORT || 3000;
+CONFIG.PORT = process.env.PORT || 5050;
 
 //Mail config
 
@@ -21,6 +21,11 @@ CONFIG.tools = [
     {code: "name-generator", name: "Name generator", view: "nameGenerator", description: "generate random name.",
         fields: [
         ]
+    },
+    {code: "sha256-encryptor", name: "SHA256 encryptor", view: "sha256Encryptor", description: "encrypt string using SHA256.",
+        fields: [
+            {field: "str", type: "String", description: "string to be ectrypted"}
+        ]    
     }
 ]
 
