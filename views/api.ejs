@@ -16,8 +16,11 @@
         <h1 class="tool-title title is-5"><strong>Tool list:</strong></h1>
 
         <!--one element code start-->
+        <%for(var i=0; i< tools.length; ++i){%>
         <div class="tool-api">
-            <h1 class="tool-title title is-5" style="font-weight:350;"><a href="/tool/avatar-generator">avatar-generator</a></h1>
+            <h1 class="tool-title title is-5" style="font-weight:350;"><a href="/tool/<%=tools[i].code%>">• <%=tools[i].name%></a> - <%=tools[i].description%></a></h1>
+            <code>TOOL_NAME: <%=tools[i].code%></code> <br><br>
+            <%if(tools[i].fields.length > 0){%>
             <table class="table is-bordered" style="font-size:15px;">
                 <thead>
                     <tr>
@@ -27,35 +30,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <%for(var j=0; j< tools[i].fields.length; ++j){%>
                     <tr>
-                        <td>name</td>
-                        <td>String</td>
-                        <td>name to generade the avatar picture</td>
+                        <td><%=tools[i].fields[j].field%></td>
+                        <td><%=tools[i].fields[j].type%></td>
+                        <td><%=tools[i].fields[j].description%></td>
                     </tr>
+                    <%}%>
                 </tbody>
             </table>
+            <%}else{%>
+                Without fields.
+            <%}%>
         </div>
+        <%}%>
         <!--one element code end-->
 
-        <div class="tool-api">
-            <h1 class="tool-title title is-5" style="font-weight:350;"><a href="/avatarGenerator">avatarGenerator</a></h1>
-            <table class="table is-bordered" style="font-size:15px;">
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>name</td>
-                        <td>String</td>
-                        <td>name to generade the avatar picture</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 </div>
 

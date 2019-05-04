@@ -8,9 +8,20 @@ CONFIG.PORT = process.env.PORT || 3000;
 
 //Tools config
 CONFIG.tools = [
-    {code: "avatar-generator", name: "Avatar picture generator", view: "avatarGenerator", description: "simply generate picture from string"},
-    {code: "name-generator", name: "Name generator", view: "nameGenerator", description: "generate random name"},
-    {code: "json-beautifier", name: "JSON Beautifier", view: "jsonBeautifier", description: "format your JSON to readeble view"}
+    {code: "json-beautifier", name: "JSON Beautifier", view: "jsonBeautifier", description: "format your JSON to readeble view.",
+        fields: [
+            {field:"json", type: "String", description: "json to be modifyid"}
+        ]
+    },
+    {code: "avatar-generator", name: "Avatar picture generator", view: "avatarGenerator", description: "simply generate picture from string.",
+        fields: [
+            {field:"name", type: "String", description: "name to generade the avatar picture."}
+        ]
+    },
+    {code: "name-generator", name: "Name generator", view: "nameGenerator", description: "generate random name.",
+        fields: [
+        ]
+    }
 ]
 
 /**

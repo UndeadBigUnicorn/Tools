@@ -19,7 +19,7 @@
 <div class="header">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" id="brand" href="/tool">
+        <a class="navbar-item" id="brand" href="/">
           <img src="/assets/img/logo.png" id="brand-img">
           <span>web-tools</span>
         </a>
@@ -32,9 +32,9 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">Tools</a>
             <div class="navbar-dropdown">
-              <a href="/tool/avatar-generator" class="navbar-item">Avatar Generator</a>
-              <a href="/tool/name-generator" class="navbar-item">Name Generator</a>
-              <a href="/tool/json-beautifier" class="navbar-item">JSON Beautifier</a>
+              <%for(var i=0; i< tools.length; ++i){%>
+                <a href="/tool/<%=tools[i].code%>" class="navbar-item"><%=tools[i].name%></a>
+              <%}%>
             </div>
           </div>
         </div>
