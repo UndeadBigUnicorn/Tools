@@ -1,4 +1,10 @@
-<div class="notification is-info">
-<button class="delete"></button>
+<div id="notification-api" class="notification is-info">
+<button onclick="hide();return false" class="delete"></button>
   Also you can use this feature by API. Read the <a href="/api">documentation</a>.
 </div>
+
+<script>
+  function hide(){
+      $("#notification-api").hide();
+  }
+</script>

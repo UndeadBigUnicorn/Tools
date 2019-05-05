@@ -124,11 +124,43 @@ app.get('/login', function (req, res) {
     });
 });
 
+app.post('/login', function (req, res) {
+    if(!req.body){
+        return res.status(400).send("Bad request, arguments are required!");
+    }
+    let email = req.body.email;
+    let password = req.body.password;
+    //TODO: connect to database
+    let userFound = true;
+    if(userFound){
+        return res.status(400).send("User not found!");
+    } 
+    else{
+        return res.status(200).send("Success!");
+    }
+})
+
 app.get('/signup', function (req, res) {
     return res.render('signup', {
         tools: CONFIG.tools
     });
 });
+
+app.post('/signup', function (req, res) {
+    if(!req.body){
+        return res.status(400).send("Bad request, arguments are required!");
+    }
+    let email = req.body.email;
+    let password = req.body.password;
+    //TODO: connect to database
+    let userExist = true;
+    if(userExist){
+        return res.status(400).send("User with this email already exist!");
+    } 
+    else{
+        return res.status(200).send("Account created!");
+    }
+})
 
 app.get('/404', function (req, res) {
     return res.render('static/404', {

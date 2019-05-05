@@ -1,5 +1,6 @@
 $(window).ready(()=>{
-    
+    $("#notification-api").hide();
+
     $("#email").change(()=>{
         let email = $("#email").val();
         if(email == ""){
@@ -52,7 +53,7 @@ $(window).ready(()=>{
     }
 
     $("#signup-btn").click(()=>{
-        let ok = false;
+        let ok = true;
         let confirmPassword = $("#confirm-password").val();
         let password = $("#password").val();
         let email = $("#email").val();
@@ -95,6 +96,29 @@ $(window).ready(()=>{
                 $("#confirm-password-err").text("");
                 $("#confirm-password").removeClass("is-danger");
             }
+            return;
+        }
+        else{
+            $.post({
+                url: "/signup",
+                data: JSON.stringify({
+                    email: email,
+                    password: password
+                }),
+                success: data=>{
+                    if(data.statusCode != 200){
+                        $("#notification-api").show();
+                    }
+                    else{
+                        //Success
+                        $("#notification-api").hide();
+                        window.history.back();
+                    }
+                },
+                error: err=>{
+                    $("#notification-api").show();
+                }
+            })
         }
     })
 })

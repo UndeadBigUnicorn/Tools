@@ -7,6 +7,10 @@
             <img src="/assets/img/logo.png" width="25" height="25" id="brand-img">
             <span>Registration</span>
         </h1>
+        <div id="notification-api" class="notification is-warning">
+                <button onclick="hide();return false" class="delete"></button>
+                User with this email already exist!
+        </div>
         <span>Create an account</span>
         <div class="fields">
             <div class="field">
@@ -45,3 +49,8 @@
 <% include common/footer.ejs %>
 
 <script src="../assets/js/signup.js"></script>
+<script>
+    function hide(){
+        $("#notification-api").hide();
+    }
+</script>

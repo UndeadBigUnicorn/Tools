@@ -7,6 +7,10 @@
             <img src="/assets/img/logo.png" width="25" height="25" id="brand-img">
             <span>Welcome to web-tools!</span>
         </h1>
+        <div id="notification-api" class="notification is-warning">
+                <button onclick="hide();return false" class="delete"></button>
+                User not found!
+        </div>
         <span>Please login in or <a href="/signup">create an account</a>.</span>
         <div class="fields">
             <div class="field">
@@ -36,3 +40,8 @@
 <% include common/footer.ejs %>
 
 <script src="../assets/js/login.js"></script>
+<script>
+    function hide() {
+        $("#notification-api").hide();
+    }
+</script>
