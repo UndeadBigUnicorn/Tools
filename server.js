@@ -102,16 +102,10 @@ app.get('/api/json-beautifier', function (req, res) {
     }
 });
 
-app.get('/api/name-generator', function (req, res) {
-    database.selectRandomAdjective().then(adj => {
-        let adjective = adj;
-
-        database.selectRandomAnimal().then(anm => {
-            let animal = anm;
-            return res.send(adjective + " " + animal);
-        });
-    });
-
+app.get('/api/name-generator', async function (req, res) {   
+    let adjective = await database.selectRandomAdjective();
+    let animal = await database.selectRandomAnimal();
+    return res.send(adjective + " " + animal);
 });
 
 app.get('/api/digets-generator', function (req, res) {    
