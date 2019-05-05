@@ -9,6 +9,9 @@ const emailChecker = require("./utils/emailChecker");
 const digetsGenerator = require("./utils/digetsGenerator");
 const nameGenerator = require("./utils/nameGenerator");
 
+//TODO: run this on new server instance
+//nameGenerator.createAdjectivesList();
+//nameGenerator.createAnimalsList();
 //Database
 const database = require("./database/database");
 
@@ -104,7 +107,7 @@ app.get('/api/json-beautifier', function (req, res) {
 });
 
 app.get('/api/name-generator', async function (req, res) {
-    return res.send(await nameGenerator.getName());
+    return res.send((await nameGenerator.getName()).toLowerCase());
 });
 
 app.get('/api/digets-generator', function (req, res) {    
