@@ -23,7 +23,6 @@ function addUser(username, password) {
                 .insertOne(user)
                 .then(() => {
                     console.log('User ' + JSON.stringify(user) + ' has been inserted');
-                    client.close();
                 });
         });
     });
@@ -50,7 +49,6 @@ function exists(username, password) {
                 } else {
                     resolve(false);
                 }
-                client.close();
             });
         });
     });
@@ -72,7 +70,6 @@ function addAdjective(adj) {
             })
             .then(() => {
                 console.log('Adjective ' + adj + ' has been inserted');
-                client.close();
             });
     });
 }
@@ -93,7 +90,6 @@ function addAnimal(am) {
             })
             .then(() => {
                 console.log('Animal ' + am + ' has been inserted');
-                client.close();
             });
     });
 }
@@ -113,8 +109,7 @@ function selectRandomAdjective() {
                 .aggregate([{$sample: {size: 1}}]).toArray(function (err, res) {
                 if (err)
                     reject(err);
-                resolve(res);
-                client.close();
+                resolve(res[0].adj);
             })
         });
     });
@@ -134,8 +129,7 @@ function selectRandomAnimal() {
             animals.aggregate([{$sample: {size: 1}}]).toArray(function (err, res) {
                 if (err)
                     reject(err);
-                resolve(res);
-                client.close();
+                resolve(res[0].name);
             });
         });
     });
