@@ -7,6 +7,7 @@ const encrypt = require("./utils/encrypt");
 const facebookChecker = require("./utils/facebookChecker");
 const emailChecker = require("./utils/emailChecker");
 const digetsGenerator = require("./utils/digetsGenerator");
+const nameGenerator = require("./utils/nameGenerator");
 
 //Database
 const database = require("./database/database");
@@ -102,10 +103,8 @@ app.get('/api/json-beautifier', function (req, res) {
     }
 });
 
-app.get('/api/name-generator', async function (req, res) {   
-    let adjective = await database.selectRandomAdjective();
-    let animal = await database.selectRandomAnimal();
-    return res.send(adjective + " " + animal);
+app.get('/api/name-generator', async function (req, res) {
+    return res.send(await nameGenerator.getName());
 });
 
 app.get('/api/digets-generator', function (req, res) {    
