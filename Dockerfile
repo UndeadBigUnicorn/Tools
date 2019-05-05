@@ -32,7 +32,6 @@ COPY . /
 
 ENV NODE_ENV production
 ENV PORT 3000
-ENV MONGODB_URI 'mongodb://localhost:27017/tools'
 
 USER node
 
