@@ -116,7 +116,7 @@ app.get('/api/name-generator', async function (req, res) {
     return res.send((await nameGenerator.getName()).toLowerCase());
 });
 
-app.get('/api/digets-generator', function (req, res) {    
+app.get('/api/digets-generator', function (req, res) {
     return res.send(digetsGenerator.generateCode());
 });
 
@@ -127,23 +127,19 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-    if(!req.body){
+    if (!req.body) {
         return res.status(400).send("Bad request, arguments are required!");
     }
     let email = req.body.email;
     let password = req.body.password;
-    //TODO: connect to database
-    let userFound = true;
-    if(userFound){
-        return res.status(400).send("User not found!");
-    } 
-    else{
+
+    database.exists(email, password).then(exists => {
         let UUID = uuidv4();
         req.session.UUID = UUID;
         //TODO: set this UUID in database to current user;
-        return res.status(200).send("Success!");
-    }
-})
+        return exists ? res.status(400).send("User not found!") : res.status(200).send("Success!");
+    });
+});
 
 app.get('/signup', function (req, res) {
     return res.render('signup', {
@@ -152,22 +148,21 @@ app.get('/signup', function (req, res) {
 });
 
 app.post('/signup', function (req, res) {
-    if(!req.body){
+    if (!req.body) {
         return res.status(400).send("Bad request, arguments are required!");
     }
     let email = req.body.email;
     let password = req.body.password;
-    //TODO: connect to database
-    let userExist = true;
-    if(userExist){
-        return res.status(400).send("User with this email already exist!");
-    } 
-    else{
-        return res.status(200).send("Account created!");
-    }
+    database.exists(email, password).then(exists => {
+        if (exists) {
+            return res.status(400).send("User with this email already exist!");
+        } else {
+            database.addUser(email, password);
+            return res.status(200).send("Account created!");
+        }
+    });
 });
-
-app.get("/logout", function (req,res){
+app.get("/logout", function (req, res) {
     req.session.UUID = "";
     return res.redirect("/");
 });
