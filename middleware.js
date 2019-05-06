@@ -48,7 +48,7 @@ app.use('*/img',express.static(path.join(__dirname,'assets/img')));
 app.use((req, res, next)=>{
     let UUID = req.session.UUID ? req.session.UUID : "";
     //TODO: get current user from database by session token and test it
-    let currentUser = {};
+    let currentUser = "";
     
     if(!currentUser){
         req.user = null;

@@ -22,6 +22,7 @@ const CONFIG = require("./config/config")
 
 //Test our app
 app.get('/', function (req, res) {
+    console.log(req.user);
     return res.render('home', {
         tools: CONFIG.tools,
         user: req.user
@@ -122,7 +123,8 @@ app.get('/api/digets-generator', function (req, res) {
 
 app.get('/login', function (req, res) {
     return res.render('login', {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 
@@ -143,7 +145,8 @@ app.post('/login', function (req, res) {
 
 app.get('/signup', function (req, res) {
     return res.render('signup', {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 
