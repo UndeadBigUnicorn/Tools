@@ -101,10 +101,10 @@ $(window).ready(()=>{
         else{
             $.post({
                 url: "/signup",
-                data: JSON.stringify({
+                data: {
                     email: email,
                     password: password
-                }),
+                },
                 success: data=>{
                     if(data.statusCode != 200){
                         $("#notification-api").show();

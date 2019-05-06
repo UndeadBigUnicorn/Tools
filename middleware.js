@@ -7,7 +7,10 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 //Use parsers
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 //Setup CORS Policy
