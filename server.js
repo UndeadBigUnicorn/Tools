@@ -22,7 +22,6 @@ const CONFIG = require("./config/config")
 
 //Test our app
 app.get('/', function (req, res) {
-    console.log(req.user);
     return res.render('home', {
         tools: CONFIG.tools,
         user: req.user
