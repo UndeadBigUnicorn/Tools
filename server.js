@@ -135,10 +135,14 @@ app.post('/login', function (req, res) {
     let password = req.body.password;
 
     database.exists(email, password).then(exists => {
-        let UUID = uuidv4();
-        req.session.UUID = UUID;
-        database.addUUIDToUser(email, UUID);
-        return exists ? res.status(200).send("Success!") : res.status(400).send("User not found!");
+        if (exists){
+            let UUID = uuidv4();
+            req.session.UUID = UUID;
+            database.addUUIDToUser(email, UUID);
+            return res.status(200).send("Success!");
+        } 
+        return res.status(400).send("User not found!");
+
     });
 });
 
@@ -164,8 +168,9 @@ app.post('/signup', function (req, res) {
         }
     });
 });
+
 app.get("/logout", function (req, res) {
-    req.session.UUID = "";
+    req.session.UUID = null;
     return res.redirect("/");
 });
 

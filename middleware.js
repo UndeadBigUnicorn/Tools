@@ -20,14 +20,10 @@ app.use(cors());
 //Setup session
 var session = require("express-session");
 app.use(session({
-      resave: false,
+      resave: true,
       httpOnly: true,
       saveUninitialized: true,
-      secret: ';l#&ldsa$',
-      cookie: {
-          maxAge: 600,
-          secure: true
-      }
+      secret: ';l#&ldsa$'
 }));
 
 //Healthcheck
@@ -47,16 +43,22 @@ app.use('*/img',express.static(path.join(__dirname,'assets/img')));
 
 //Auth middleware
 app.use((req, res, next)=>{
-    let UUID = req.session.UUID ? req.session.UUID : "";
-    database.selectUserByUUID(UUID).then(user => {
-        if(!user){
-            req.user = null;
-        }
-        else {
-            req.user = user;
-        }
+    let UUID = req.session.UUID ? req.session.UUID : null;
+    if (!UUID) {
+        req.user = null;
         next();
-    })
+    } 
+    else {
+        database.selectUserByUUID(UUID).then(user => {
+            if(!user){
+                req.user = null;
+            }
+            else {
+                req.user = user;
+            }
+            next();
+        })
+    }
 });
 
 

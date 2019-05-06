@@ -84,14 +84,9 @@ $(window).ready(()=>{
                     password: password
                 },
                 success: data=>{
-                    if(data.statusCode != 200){
-                        $("#notification-api").show();
-                    }
-                    else{
-                        //Success
-                        $("#notification-api").hide();
-                        window.history.back();
-                    }
+                    //Success
+                    $("#notification-api").hide();
+                    window.location.href = "/";
                 },
                 error: err=>{
                     $("#notification-api").show();
