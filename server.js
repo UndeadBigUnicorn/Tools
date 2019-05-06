@@ -137,8 +137,8 @@ app.post('/login', function (req, res) {
     database.exists(email, password).then(exists => {
         let UUID = uuidv4();
         req.session.UUID = UUID;
-        //TODO: set this UUID in database to current user;
-        return exists ? res.status(400).send("User not found!") : res.status(200).send("Success!");
+        database.addUUIDToUser(email, UUID);
+        return exists ? res.status(200).send("Success!") : res.status(400).send("User not found!");
     });
 });
 

@@ -17,7 +17,8 @@ function addUser(username, password) {
         ENCODER.encrypt(password).then(hash => {
             const user = {
                 username: username,
-                password: hash
+                password: hash,
+                UUID: null
             };
             users
                 .insertOne(user)
@@ -135,11 +136,47 @@ function selectRandomAnimal() {
     });
 }
 
+function addUUIDToUser(username, UUID) {
+    client.connect((err) => {
+        if (err)
+            throw err;
+        console.log("Connected to the database");
+
+        const users = client
+            .db(CONFIG.databaseName)
+            .collection(CONFIG.users);
+
+        users.updateOne({username: username}, {$set : {"UUID":UUID}})
+    });
+}
+
+function selectUserByUUID(uuid) {
+    return new Promise((resolve, reject) => {
+        client.connect((err) => {
+            if (err)
+                throw err;
+            console.log("Connected to the database");
+
+            const users = client
+                .db(CONFIG.databaseName)
+                .collection(CONFIG.users);
+
+            users.findOne({
+                UUID: uuid
+            }).then(user => {
+                resolve(user);
+            });
+        });
+    });
+}
+
 module.exports = {
     addUser,
     exists,
     addAdjective,
     addAnimal,
     selectRandomAdjective,
-    selectRandomAnimal
+    selectRandomAnimal,
+    selectUserByUUID,
+    addUUIDToUser
 };

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const database = require("./database/database");
 
 //Use parsers
 app.use(bodyParser.urlencoded({
@@ -47,16 +48,15 @@ app.use('*/img',express.static(path.join(__dirname,'assets/img')));
 //Auth middleware
 app.use((req, res, next)=>{
     let UUID = req.session.UUID ? req.session.UUID : "";
-    //TODO: get current user from database by session token and test it
-    let currentUser = "";
-    
-    if(!currentUser){
-        req.user = null;
-    }
-    else {
-        req.user = currentUser;
-    }
-    next();
+    database.selectUserByUUID(UUID).then(user => {
+        if(!user){
+            req.user = null;
+        }
+        else {
+            req.user = user;
+        }
+        next();
+    })
 });
 
 
