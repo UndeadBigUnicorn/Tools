@@ -12,15 +12,19 @@ const nameGenerator = require("./utils/nameGenerator");
 //TODO: run this on new server instance
 //nameGenerator.createAdjectivesList();
 //nameGenerator.createAnimalsList();
+
 //Database
 const database = require("./database/database");
+
+const uuidv4 = require('uuid/v4');
 
 const CONFIG = require("./config/config")
 
 //Test our app
 app.get('/', function (req, res) {
     return res.render('home', {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 
@@ -35,13 +39,15 @@ app.get('/tool/:toolCode', function (req, res) {
         return controllerHelper._404(req, res);
     }
     return res.render('tools/' + tool.view, {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 
 app.get('/api', function (req, res) {
     return res.render('api', {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 
@@ -132,6 +138,9 @@ app.post('/login', function (req, res) {
         return res.status(400).send("User not found!");
     } 
     else{
+        let UUID = uuidv4();
+        req.session.UUID = UUID;
+        //TODO: set this UUID in database to current user;
         return res.status(200).send("Success!");
     }
 })
@@ -156,11 +165,17 @@ app.post('/signup', function (req, res) {
     else{
         return res.status(200).send("Account created!");
     }
-})
+});
+
+app.get("/logout", function (req,res){
+    req.session.UUID = "";
+    return res.redirect("/");
+});
 
 app.get('/404', function (req, res) {
     return res.render('static/404', {
-        tools: CONFIG.tools
+        tools: CONFIG.tools,
+        user: req.user
     });
 });
 

@@ -44,7 +44,20 @@ app.use('*/less',express.static(path.join(__dirname,'assets/less')));
 app.use('*/js',express.static(path.join(__dirname,'assets/js')));
 app.use('*/img',express.static(path.join(__dirname,'assets/img')));
 
-
+//Auth middleware
+app.use((req, res, next)=>{
+    let UUID = req.session.UUID ? req.session.UUID : "";
+    //TODO: get current user from database by session token and test it
+    let currentUser = {};
+    
+    if(!currentUser){
+        req.user = null;
+    }
+    else {
+        req.user = currentUser;
+    }
+    next();
+});
 
 
 //Export our configurated app
