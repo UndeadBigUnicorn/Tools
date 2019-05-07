@@ -10,8 +10,8 @@ const digetsGenerator = require("./utils/digetsGenerator");
 const nameGenerator = require("./utils/nameGenerator");
 
 //TODO: run this on new server instance
-nameGenerator.createAdjectivesList();
-nameGenerator.createAnimalsList();
+// nameGenerator.createAdjectivesList();
+// nameGenerator.createAnimalsList();
 
 //Database
 const database = require("./database/database");

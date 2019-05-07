@@ -7,3 +7,7 @@ mongo:
     MONGO_INITDB_ROOT_USERNAME: root
     MONGO_INITDB_ROOT_PASSWORD: root
     MONGODB_URI: "mongodb://localhost:27017/tools"
+app:
+  build: .
+  ports:
+    - 3000:3000
